@@ -12,7 +12,8 @@ Requirements:
 
 Bonus points:
 - Code uses ES6 features
-- Implement rocket stages. When the fuel in first_stage is wasted the rocket should lose it's bottom half and continue on the second_stage fuel supply
+- Implement rocket stages. When the fuel in first_stage is wasted the rocket should lose it's bottom half and continue on the 
+  second_stage fuel supply
 - The rocket should have exhaust flames shooting from the bottom while it moves
 - Rocket exhaust flames should be "pulsating" (mimicing real flames)
 - Implements the usage of promises
