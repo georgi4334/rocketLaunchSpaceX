@@ -5,4 +5,38 @@ body {
   -webkit-box-sizing: border-box;
           box-sizing: border-box;
 }
+
+.space {
+  height: 100vh;
+  background-image: url("../boost-task/assets/bg.jpg");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.wrapper {
+  height: 15vh;
+  display: inline-block;
+}
+
+.rocket1,
+.rocket2,
+.rocket3,
+.rocket4 {
+  width: 7vw;
+  border: 1px solid red;
+  background-image: url("../boost-task/assets/rocket.png");
+  background-position: center;
+  background-repeat: no-repeat;
+  height: 100%;
+}
+
+.fire {
+  background-image: url("../boost-task/assets/thrust.png");
+  background-position: center;
+  background-repeat: no-repeat;
+  height: 100%;
+  width: 7vw;
+  border: 1px solid red;
+}
 /*# sourceMappingURL=style.css.map */
