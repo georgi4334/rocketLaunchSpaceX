@@ -25,9 +25,6 @@ fetch(url)
                             console.log(element[key][secondItem])
                         }
                     }
-                }else{
-                    //if there is no second stage add 0 
-                    arrFuelTons.push(0);
                 }
             }
         });
