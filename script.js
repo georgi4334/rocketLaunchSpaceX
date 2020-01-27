@@ -85,7 +85,7 @@ fetch(url)
             document.querySelector('.fire4').remove();
         }
 
-         anime({
+        anime({
             targets: '.first',
             translateY: -650,
             duration: rocket1 + rocket11,
@@ -104,7 +104,7 @@ fetch(url)
             }
 
         })
-         anime({
+        anime({
             targets: '.third',
             translateY: -650,
             duration: rocket3 + rocket33,
@@ -114,7 +114,7 @@ fetch(url)
             }
 
         })
-         anime({
+        anime({
             targets: '.fourth',
             translateY: -650,
             duration: rocket4 + rocket44,
@@ -122,6 +122,13 @@ fetch(url)
             update: function (anim) {
                 document.querySelector('.infoFourth').innerHTML = Math.round(anim.progress) + '%';
             }
+        })
+        
+        anime({
+            targets: '.fire',
+            translateY: 20,
+            duration: 100,
+            loop: true
         })
 
         rocketOne(rocket1, rocket11)
@@ -137,6 +144,10 @@ fetch(url)
 
         setTimeout(() => {
             alert('Success!');
+            let answer = confirm("Try another launch ?");
+            if (answer === true) {
+                window.location.reload();
+            }
         }, Math.max(...biggest) + 50);
     })
 
