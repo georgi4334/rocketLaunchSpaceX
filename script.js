@@ -34,14 +34,17 @@ fetch(url)
 
         const delayRocket1 = ms => new Promise(resolve => setTimeout(resolve, ms));
         const removeRocket1 = ms => new Promise(resolve => setTimeout(resolve, ms));
-
+        
         async function rocketOne(first_stage, second_stage) {
             setTimeout(() => {
                 console.log('first stage rocket 1')
+                document.querySelector('.rocket1').classList.add('top1');
             }, first_stage)
             await delayRocket1(first_stage + second_stage);
             console.log('second stage rocket 1')
             await removeRocket1(10)
+            document.querySelector('.rocket1').remove();
+            document.querySelector('.fire1').remove();
             console.log('remove rocket')
             console.log('text for congrats')
         }
@@ -90,12 +93,23 @@ fetch(url)
             console.log('text for congrats')
         }
 
-      //  console.log(rocketOne(rocket1, rocket11))
+        const launchRocket1 = anime({
+            targets: '.first',
+            translateY: -650,
+            duration: rocket1 + rocket11,
+            easing: 'linear',
+            update: function (anim) {
+                document.querySelector('.infoFirst').innerHTML = Math.round(anim.progress) + '%';
+            }
+            
+        })
+
+        console.log(rocketOne(rocket1, rocket11))
       //  console.log(rocketTwo(rocket2, rocket22))
        // console.log(rocketThree(rocket3, rocket33))
        // console.log(rocketFour(rocket4, rocket44))
 
-
+console.log(arrFuelTons)
     })
     .catch((error) => {
         console.error('Error:', error);
