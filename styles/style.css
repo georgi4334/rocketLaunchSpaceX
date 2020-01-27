@@ -8,6 +8,7 @@ body {
 
 .space {
   height: 100vh;
+  position: relative;
   background-image: url("../boost-task/assets/bg.jpg");
   background-position: center;
   background-repeat: no-repeat;
@@ -31,12 +32,66 @@ body {
   height: 100%;
 }
 
-.fire {
+.top1,
+.top2,
+.top3,
+.top4 {
+  width: 7vw;
+  border: 1px solid red;
+  background-image: url("../boost-task/assets/rocket_top.png");
+  background-position: center;
+  background-repeat: no-repeat;
+  height: 100%;
+}
+
+.fire1,
+.fire2,
+.fire3,
+.fire4 {
   background-image: url("../boost-task/assets/thrust.png");
   background-position: center;
   background-repeat: no-repeat;
   height: 100%;
   width: 7vw;
   border: 1px solid red;
+}
+
+.finalMsg {
+  color: white;
+  font-weight: bold;
+}
+
+.first {
+  position: absolute;
+  bottom: 0;
+  left: 20%;
+}
+
+.second {
+  position: absolute;
+  bottom: 0;
+  left: 35%;
+}
+
+.third {
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+}
+
+.fourth {
+  position: absolute;
+  bottom: 0;
+  left: 65%;
+}
+
+.infoFirst,
+.infoSecond,
+.infoThird,
+.infoFourth {
+  color: white;
+  position: absolute;
+  top: -10%;
+  left: 40%;
 }
 /*# sourceMappingURL=style.css.map */
