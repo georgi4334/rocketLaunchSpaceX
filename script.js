@@ -31,56 +31,46 @@ fetch(url)
 
 
 
-        const delayRocket1 = ms => new Promise(resolve => setTimeout(resolve, ms));
-        const removeRocket1 = ms => new Promise(resolve => setTimeout(resolve, ms));
+        const delayRocket = ms => new Promise(resolve => setTimeout(resolve, ms));
+        const removeRocket = ms => new Promise(resolve => setTimeout(resolve, ms));
 
         async function rocketOne(first_stage, second_stage) {
             setTimeout(() => {
                 document.querySelector('.rocket1').classList.add('top1');
             }, first_stage)
-            await delayRocket1(first_stage + second_stage);
-            await removeRocket1(10)
+            await delayRocket(first_stage + second_stage);
+            await removeRocket(10)
             document.querySelector('.rocket1').remove();
             document.querySelector('.fire1').remove();
         }
 
 
-        const delayRocket2 = ms => new Promise(resolve => setTimeout(resolve, ms));
-        const removeRocket2 = ms => new Promise(resolve => setTimeout(resolve, ms));
-
         async function rocketTwo(first_stage, second_stage) {
             setTimeout(() => {
                 document.querySelector('.rocket2').classList.add('top2');
             }, first_stage)
-            await delayRocket2(first_stage + second_stage);
-            await removeRocket2(10)
+            await delayRocket(first_stage + second_stage);
+            await removeRocket(10)
             document.querySelector('.rocket2').remove();
             document.querySelector('.fire2').remove();
         }
-
-
-        const delayRocket3 = ms => new Promise(resolve => setTimeout(resolve, ms));
-        const removeRocket3 = ms => new Promise(resolve => setTimeout(resolve, ms));
 
         async function rocketThree(first_stage, second_stage) {
             setTimeout(() => {
                 document.querySelector('.rocket3').classList.add('top3');
             }, first_stage)
-            await delayRocket3(first_stage + second_stage);
-            await removeRocket3(10)
+            await delayRocket(first_stage + second_stage);
+            await removeRocket(10)
             document.querySelector('.rocket3').remove();
             document.querySelector('.fire3').remove();
         }
-
-        const delayRocket4 = ms => new Promise(resolve => setTimeout(resolve, ms));
-        const removeRocket4 = ms => new Promise(resolve => setTimeout(resolve, ms));
 
         async function rocketFour(first_stage, second_stage) {
             setTimeout(() => {
                 document.querySelector('.rocket4').classList.add('top4');
             }, first_stage)
-            await delayRocket4(first_stage + second_stage);
-            await removeRocket4(10)
+            await delayRocket(first_stage + second_stage);
+            await removeRocket(10)
             document.querySelector('.rocket4').remove();
             document.querySelector('.fire4').remove();
         }
