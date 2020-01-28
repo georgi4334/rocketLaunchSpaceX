@@ -123,7 +123,7 @@ fetch(url)
                 document.querySelector('.infoFourth').innerHTML = Math.round(anim.progress) + '%';
             }
         })
-        
+
         anime({
             targets: '.fire',
             translateY: 20,
@@ -138,10 +138,10 @@ fetch(url)
 
         //find the timing to text Success ! 
         let biggest = [];
-        for (let i = 1; i < arr.length; i += 2) {
-            biggest.push(arr[i - 1] + arr[i])
+        for (let i = 1; i < arrFuelTons.length; i += 2) {
+            biggest.push(arrFuelTons[i - 1] + arrFuelTons[i])
         }
-
+        
         setTimeout(() => {
             alert('Success!');
             let answer = confirm("Try another launch ?");
