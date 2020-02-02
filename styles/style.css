@@ -1,4 +1,3 @@
-html,
 body {
   margin: 0;
   padding: 0;
@@ -7,90 +6,53 @@ body {
 }
 
 .space {
-  height: 100vh;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
   position: relative;
   background-image: url("../boost-task/assets/bg.jpg");
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
+  height: 100vh;
 }
 
 .wrapper {
-  height: 15vh;
-  display: inline-block;
+  height: 200px;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: auto;
 }
 
-.rocket1,
-.rocket2,
-.rocket3,
-.rocket4 {
-  width: 7vw;
+.rocket {
+  width: 100px;
+  height: 100px;
   background-image: url("../boost-task/assets/rocket.png");
   background-position: center;
   background-repeat: no-repeat;
-  height: 100%;
-  -webkit-transition: all 0.4s linear;
-  transition: all 0.4s linear;
 }
 
-.top1,
-.top2,
-.top3,
-.top4 {
-  width: 7vw;
-  background-image: url("../boost-task/assets/rocket_top.png");
-  background-position: center;
-  background-repeat: no-repeat;
-  height: 100%;
-}
-
-.fire1,
-.fire2,
-.fire3,
-.fire4 {
+.fire {
+  width: 100px;
+  height: 100px;
   background-image: url("../boost-task/assets/thrust.png");
   background-position: center;
   background-repeat: no-repeat;
-  height: 100%;
-  width: 7vw;
 }
 
-.finalMsg {
+.top {
+  width: 100px;
+  height: 100px;
+  background-image: url("../boost-task/assets/rocket_top.png");
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.info {
   color: white;
   font-weight: bold;
-}
-
-.first {
-  position: absolute;
-  bottom: 0;
-  left: 20%;
-}
-
-.second {
-  position: absolute;
-  bottom: 0;
-  left: 35%;
-}
-
-.third {
-  position: absolute;
-  bottom: 0;
-  left: 50%;
-}
-
-.fourth {
-  position: absolute;
-  bottom: 0;
-  left: 65%;
-}
-
-.infoFirst,
-.infoSecond,
-.infoThird,
-.infoFourth {
-  color: white;
-  position: absolute;
-  top: -10%;
-  left: 40%;
+  text-align: center;
+  padding-bottom: 5px;
+  padding-left: 5px;
 }
 /*# sourceMappingURL=style.css.map */

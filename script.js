@@ -1,6 +1,9 @@
+let spaceContainer = document.querySelector('.space');
+
 const url = 'https://api.spacexdata.com/v2/rockets';
 
 let arrFuelTons = [];
+let sortedFuelArr = [];
 
 fetch(url)
     .then((response) => {
@@ -8,8 +11,8 @@ fetch(url)
     })
     .then((data) => {
 
-        data.forEach((element, index) => {
-            for (let [key, value] of Object.entries(element)) {
+        data.forEach((element) => {
+            for (let [key] of Object.entries(element)) {
                 if (key === 'first_stage') {
                     for (let firstItem in element[key]) {
                         if (firstItem === 'fuel_amount_tons') {
@@ -27,111 +30,75 @@ fetch(url)
             }
         });
 
-        let [rocket1, rocket11, rocket2, rocket22, rocket3, rocket33, rocket4, rocket44] = arrFuelTons;
-
-
-
-        const delayRocket = ms => new Promise(resolve => setTimeout(resolve, ms));
-        const removeRocket = ms => new Promise(resolve => setTimeout(resolve, ms));
-
-        async function rocketOne(first_stage, second_stage) {
-            setTimeout(() => {
-                document.querySelector('.rocket1').classList.add('top1');
-            }, first_stage)
-            await delayRocket(first_stage + second_stage);
-            await removeRocket(10)
-            document.querySelector('.rocket1').remove();
-            document.querySelector('.fire1').remove();
+        // multidimensional array - each rocket fuel in separate array
+        for (let b = 1; b < arrFuelTons.length; b += 2) {
+            sortedFuelArr.push([arrFuelTons[b - 1], arrFuelTons[b]])
         }
 
-
-        async function rocketTwo(first_stage, second_stage) {
-            setTimeout(() => {
-                document.querySelector('.rocket2').classList.add('top2');
-            }, first_stage)
-            await delayRocket(first_stage + second_stage);
-            await removeRocket(10)
-            document.querySelector('.rocket2').remove();
-            document.querySelector('.fire2').remove();
+        //Sum the two stages
+        let newArr = []
+        for (let k = 0; k < arrFuelTons.length; k += 2) {
+            newArr.push(arrFuelTons[k] + arrFuelTons[k + 1])
         }
 
-        async function rocketThree(first_stage, second_stage) {
-            setTimeout(() => {
-                document.querySelector('.rocket3').classList.add('top3');
-            }, first_stage)
-            await delayRocket(first_stage + second_stage);
-            await removeRocket(10)
-            document.querySelector('.rocket3').remove();
-            document.querySelector('.fire3').remove();
+        //create html elements (rockets)
+        for (let i = 0; i < newArr.length; i++) {
+            var newDiv = document.createElement('div');
+            newDiv.classList.add(`wrapper`);
+            newDiv.classList.add(`wrapper${i}`)
+            newDiv.innerHTML = `<div class="info info${i}"></div>
+                        <div class="rocket r${i}"></div>
+                        <div class="fire fire${i}"></div>`;
+            spaceContainer.append(newDiv)
         }
 
-        async function rocketFour(first_stage, second_stage) {
+        //function for two stages
+        const delay = ms => new Promise(resolve => setTimeout(resolve, ms));
+
+        async function rocketOne(first_stage, second_stage, idx) {
             setTimeout(() => {
-                document.querySelector('.rocket4').classList.add('top4');
+                document.querySelector(`.r${idx}`).classList.add('top');
             }, first_stage)
-            await delayRocket(first_stage + second_stage);
-            await removeRocket(10)
-            document.querySelector('.rocket4').remove();
-            document.querySelector('.fire4').remove();
+            await delay(first_stage + second_stage);
+            await delay(10)
+            document.querySelector(`.r${idx}`).remove();
+            document.querySelector(`.fire${idx}`).remove();
         }
 
-        anime({
-            targets: '.first',
-            translateY: -650,
-            duration: rocket1 + rocket11,
-            easing: 'linear',
-            update: function (anim) {
-                document.querySelector('.infoFirst').innerHTML = Math.round(anim.progress) + '%';
-            }
-        })
-        anime({
-            targets: '.second',
-            translateY: -650,
-            duration: rocket2 + rocket22,
-            easing: 'linear',
-            update: function (anim) {
-                document.querySelector('.infoSecond').innerHTML = Math.round(anim.progress) + '%';
-            }
-
-        })
-        anime({
-            targets: '.third',
-            translateY: -650,
-            duration: rocket3 + rocket33,
-            easing: 'linear',
-            update: function (anim) {
-                document.querySelector('.infoThird').innerHTML = Math.round(anim.progress) + '%';
-            }
-
-        })
-        anime({
-            targets: '.fourth',
-            translateY: -650,
-            duration: rocket4 + rocket44,
-            easing: 'linear',
-            update: function (anim) {
-                document.querySelector('.infoFourth').innerHTML = Math.round(anim.progress) + '%';
-            }
+        const promises2 = sortedFuelArr.map((number, index) => {
+            return new Promise(resolve => {
+                rocketOne(number[0], number[1], index)
+                resolve(number)
+            });
         })
 
-        anime({
-            targets: '.fire',
-            translateY: 20,
-            duration: 100,
-            loop: true
+        //Movement of the rockets
+        const promises = newArr.map((number, index) => {
+            return new Promise(resolve => {
+                anime({
+                    targets: `.wrapper${index}`,
+                    translateY: -570,
+                    duration: number,
+                    easing: 'linear',
+                    update: function (anim) {
+                        document.querySelector(`.info${index}`).innerHTML = Math.round(anim.progress) + '%';
+                    }
+                })
+                anime({
+                    targets: '.fire',
+                    translateY: 20,
+                    duration: 100,
+                    loop: true
+                })
+                resolve(number)
+            });
         })
-
-        rocketOne(rocket1, rocket11)
-        rocketTwo(rocket2, rocket22)
-        rocketThree(rocket3, rocket33)
-        rocketFour(rocket4, rocket44)
-
-        //find the timing to text Success ! 
+        // //find the timing to text Success ! 
         let biggest = [];
-        for (let i = 1; i < arrFuelTons.length; i += 2) {
-            biggest.push(arrFuelTons[i - 1] + arrFuelTons[i])
+        for (let d = 1; d < arrFuelTons.length; d += 2) {
+            biggest.push(arrFuelTons[d - 1] + arrFuelTons[d])
         }
-        
+
         setTimeout(() => {
             alert('Success!');
             let answer = confirm("Try another launch ?");
