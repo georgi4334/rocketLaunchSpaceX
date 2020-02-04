@@ -4,6 +4,7 @@ const url = 'https://api.spacexdata.com/v2/rockets';
 
 let arrFuelTons = [];
 let sortedFuelArr = [];
+let biggest = [];
 
 fetch(url)
     .then((response) => {
@@ -32,6 +33,7 @@ fetch(url)
 
         // multidimensional array - each rocket fuel in separate array
         for (let b = 1; b < arrFuelTons.length; b += 2) {
+            biggest.push(arrFuelTons[b - 1] + arrFuelTons[b])
             sortedFuelArr.push([arrFuelTons[b - 1], arrFuelTons[b]])
         }
 
@@ -94,11 +96,6 @@ fetch(url)
             });
         })
         // //find the timing to text Success ! 
-        let biggest = [];
-        for (let d = 1; d < arrFuelTons.length; d += 2) {
-            biggest.push(arrFuelTons[d - 1] + arrFuelTons[d])
-        }
-
         setTimeout(() => {
             alert('Success!');
             let answer = confirm("Try another launch ?");
