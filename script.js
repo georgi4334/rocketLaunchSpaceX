@@ -79,7 +79,7 @@ fetch(url)
             return new Promise(resolve => {
                 anime({
                     targets: `.wrapper${index}`,
-                    translateY: -570,
+                    translateY: -740,
                     duration: number,
                     easing: 'linear',
                     update: function (anim) {
